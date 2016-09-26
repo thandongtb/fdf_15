@@ -13,6 +13,7 @@
     <!-- Styles -->
 
     {!! Html::style('css/app.css') !!}
+    {!! Html::style('bower/jquery-confirm2/css/jquery-confirm.css') !!}
 
     @yield('css')
 
@@ -94,6 +95,7 @@
     <!-- Scripts -->
     {!! Html::script('bower/jquery/dist/jquery.js') !!}
     {!! Html::script('js/app.js') !!}
+    {!! Html::script('bower/jquery-confirm2/js/jquery-confirm.js') !!}
 
     @yield('js')
 </body>

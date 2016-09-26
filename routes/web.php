@@ -20,5 +20,8 @@ Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+
     Route::resource('/', 'Admin\AdminController');
+
+    Route::resource('category', 'Admin\CategoriesController');
 });

@@ -5,8 +5,10 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Social\SocialRepository;
+use App\Repositories\Category\CategoryRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Social\SocialRepositoryInterface;
+Use App\Repositories\Category\CategoryRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -28,5 +30,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         App::bind(UserRepositoryInterface::class, UserRepository::class);
         App::bind(SocialRepositoryInterface::class, SocialRepository::class);
+        App::bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 }

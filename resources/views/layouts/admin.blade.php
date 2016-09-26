@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
@@ -25,7 +26,10 @@
 
     <!-- Custom Fonts -->
     {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') !!}
+
     {!! Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') !!}
+
+    {!! Html::style('css/admin/category.css') !!}
 
     @yield('style')
 
@@ -118,7 +122,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">
+                                    <a href="{{ action('Admin\CategoriesController@index') }}">
                                         {{ trans('admin/users.all_categories') }}
                                     </a>
                                 </li>
@@ -174,7 +178,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+        @include('layouts.message')
         @yield('content')
 
     </div>
@@ -190,13 +194,13 @@
     {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.js') !!}
 
     <!-- Morris Charts JavaScript -->
-    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.no-deps.js') !!}
     {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js') !!}
 
     <!-- Custom Theme JavaScript -->
     {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js') !!}
+    {!! Html::script('bower/jquery-confirm/jquery.confirm.js') !!}
 
-    @yield('script')
+    @yield('js')
 
 </body>
 
