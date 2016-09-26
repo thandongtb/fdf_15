@@ -16,7 +16,7 @@ class Product extends Model
         'price',
         'image',
         'quantity',
-        'rate_average',
+        'rate_total',
         'rate_count',
         'view_count',
         'status',
@@ -25,5 +25,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

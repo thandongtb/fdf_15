@@ -18,6 +18,7 @@
         </div>
     </div>
     @include('layouts.message')
+
     <div id="home-url" data-url="{{ action('Home\HomeController@index') }}"></div>
 
     <div class="row">

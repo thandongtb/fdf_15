@@ -44,7 +44,7 @@
                         <div class="product-upper">
                             <img src="{{ $product->image }}" alt="" class="img-product-show">
                         </div>
-                        <h2><a href="">{{ $product->name }}</a></h2>
+                        <h2><a href="{{ action('Home\ProductController@show', ['id' => $product->id ]) }}">{{ $product->name }}</a></h2>
                         <div class="product-carousel-price text-price">
                             <ins>{{ trans('homepage.dollar') . $product->price }}</ins>
                         </div>
