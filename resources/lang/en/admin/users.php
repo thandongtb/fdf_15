@@ -32,6 +32,8 @@ return [
     'manage_users' => 'Manage Users',
     'manage_categories' => 'Manage Categories',
     'view_details' => 'View Details',
+    'category_detail' => 'Category Details',
+    'edit_category' => 'Edit Category',
     'all_users' => 'All Users',
     'user_id' => 'User ID',
     'user_name' => 'User Name',
