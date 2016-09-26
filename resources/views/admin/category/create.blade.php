@@ -24,9 +24,21 @@
                 <div class="form-group">
                     {!! Form::label('name', trans('category.name')) !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
                     <hr>
                     {!! Form::label('description', trans('category.description')) !!}
                     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+
+                    @if ($errors->has('description'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('description') }}</strong>
+                        </span>
+                    @endif
                     <hr>
                     <div class="text-center">
                         {!! Form::submit(trans('category.save'), ['class' => 'btn btn-primary btn-edit-category-submit']) !!}

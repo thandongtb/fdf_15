@@ -5,3 +5,11 @@
 .img-product {
     width: 20%;
 }
+.help-block {
+    color: red;
+}
+.img-create-product {
+    width: 50%;
+    border-radius: 10px;
+    cursor: pointer;
+}

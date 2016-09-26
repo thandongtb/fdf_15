@@ -25,7 +25,9 @@ return [
     'remember' => 'Remember Me',
     'login_facebook' => 'Login With Facebook',
     'forget_password' => 'Forgot Your Password?',
-    'name' => 'Name?',
+    'name' => 'Name',
     'reset_password' => 'Reset Password',
     'send_password_reset' => 'Send Password Reset Link',
+    'address' => 'Address',
+    'phone' => 'Phone Number',
 ];
