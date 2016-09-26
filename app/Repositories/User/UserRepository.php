@@ -13,4 +13,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         $this->model = $user;
     }
+
+    public function findSocialEmail($userSocial)
+    {
+        return $this->model->where('email', $userSocial->email)->orWhere('email', $userSocial->nickname)->first();
+    }
 }

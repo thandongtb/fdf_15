@@ -11,4 +11,10 @@
 |
 */
 
-Route::resource('/', 'Home\HomeController');
+Auth::routes();
+
+Route::resource('/home', 'Home\HomeController');
+
+Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
+
+Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');
