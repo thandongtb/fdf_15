@@ -50,9 +50,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">{{ trans('homepage.login') }}</a></li>
-                        <li><a href="{{ url('/register') }}">{{ trans('homepage.register') }}</a></li>
+                        <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('homepage.login') }}</a></li>
+                        <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('homepage.register') }}</a></li>
                     @else
+                        @if (Auth::user()->isAdmin())
+                            <li><a href="{{ action('Admin\AdminController@index') }}">{{ trans('homepage.to_admin_page') }}</a></li>
+                        @endif
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -65,7 +68,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/logout') }}"
+                                    <a href="{{ action('Auth\LoginController@logout') }}"
                                         onclick="event.preventDefault();
                                                  $('#logout-form').submit();">
                                         {{ trans('homepage.logout') }}
@@ -85,7 +88,7 @@
             </div>
         </div>
     </nav>
-
+    @include('layouts.message')
     @yield('content')
 
     <!-- Scripts -->

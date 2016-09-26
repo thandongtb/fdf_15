@@ -39,7 +39,6 @@
                             {{ Form::label('password', trans('auth.password'), ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
                                 {{ Form::password('password', ['id' => 'password', 'class' => 'form-control']) }}
-
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
