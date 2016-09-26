@@ -19,6 +19,7 @@
     "bootstrap-social": "^5.0.0",
     "owl.carousel": "^2.1.6",
     "toastr": "^2.1.3",
-    "jquery-confirm": "^2.6.0"
+    "jquery-confirm": "^2.6.0",
+    "bootstrap3-dialog": "^1.35.3"
   }
 }

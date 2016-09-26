@@ -31,14 +31,17 @@ class CategoriesController extends Controller
         $category = $this->categoryRepository->find($id);
 
         if (!$category) {
-            return redirect()->route('category.index')->with('errors', trans('category.category_not_found'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withErrors(trans('category.category_not_found'));
         }
 
         if ($category->delete()) {
-            return redirect()->route('category.index')->with('success', trans('category.delete_category_successfully'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withSuccess(trans('category.delete_category_successfully'));
         }
 
-        return redirect()->route('category.index')->with('errors', trans('category.delete_category_fail'));
+        return redirect()->action('Admin\CategoriesController@index')
+            ->withErrors(trans('category.delete_category_fail'));
     }
 
     public function create()
@@ -51,10 +54,12 @@ class CategoriesController extends Controller
         $input = $request->only('name', 'description');
 
         if ($this->categoryRepository->create($input)) {
-            return redirect()->route('category.index')->with('success', trans('category.create_category_successfully'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withSuccess(trans('category.create_category_successfully'));
         }
 
-        return redirect()->route('category.index')->with('errors', trans('category.create_category_fail'));
+        return redirect()->action('Admin\CategoriesController@index')
+            ->withErrors(trans('category.create_category_fail'));
     }
 
     public function show($id)
@@ -62,7 +67,8 @@ class CategoriesController extends Controller
         $category = $this->categoryRepository->find($id);
 
         if (!$category) {
-            return redirect()->route('category.index')->with('errors', trans('category.category_not_found'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withErrors(trans('category.category_not_found'));
         }
 
         return view('admin.category.show', compact('category'));
@@ -73,7 +79,8 @@ class CategoriesController extends Controller
         $category = $this->categoryRepository->find($id);
 
         if (!$category) {
-            return redirect()->route('category.index')->with('errors', trans('category.category_not_found'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withErrors(trans('category.category_not_found'));
         }
 
         return view('admin.category.edit', compact('category'));
@@ -84,9 +91,11 @@ class CategoriesController extends Controller
         $input = $request->only('name', 'description');
 
         if ($this->categoryRepository->update($input, $id)) {
-            return redirect()->route('category.index')->with('success', trans('category.update_category_successfully'));
+            return redirect()->action('Admin\CategoriesController@index')
+                ->withSuccess(trans('category.update_category_successfully'));
         }
 
-        return redirect()->route('category.index')->with('errors', trans('category.update_category_fail'));
+        return redirect()->action('Admin\CategoriesController@index')
+            ->withErrors(trans('category.update_category_fail'));
     }
 }

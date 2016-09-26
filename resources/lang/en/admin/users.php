@@ -34,6 +34,7 @@ return [
     'view_details' => 'View Details',
     'category_detail' => 'Category Details',
     'edit_category' => 'Edit Category',
+    'edit_product' => 'Edit Product',
     'all_users' => 'All Users',
     'user_id' => 'User ID',
     'user_name' => 'User Name',
@@ -66,4 +67,7 @@ return [
     'user_password_confirm' => 'Confirm Password',
     'manage_product' => 'Manage Product',
     'manage_orders' => 'Manage Orders',
+    'show_task' => 'Show Tasks',
+    'modal_task_title' => 'All Tasks',
+    'close' => 'Close',
 ];
