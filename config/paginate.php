@@ -17,4 +17,12 @@ return [
         'search' => 5,
         'normal' => 10,
     ],
+    'item' => [
+        'search' => 5,
+        'normal' => 10,
+    ],
+    'order' => [
+        'search' => 5,
+        'normal' => 10,
+    ],
 ];

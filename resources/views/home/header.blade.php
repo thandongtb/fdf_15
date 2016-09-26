@@ -40,7 +40,7 @@
                         <li class="active homepage-menu"><a href="{{ action('Home\HomeController@index') }}">{{ trans('homepage.home') }}</a></li>
                         <li class=""><a href="">{{ trans('homepage.shop_page') }}</a></li>
                         <li class="cart-menu"><a href="{{ action('Home\ShoppingCartController@index') }}">{{ trans('homepage.cart') }}</a></li>
-                        <li><a href="">{{ trans('homepage.checkout') }}</a></li>
+                        <li class="checkout-menu"><a href="{{ action('Home\OrderController@index') }}">{{ trans('homepage.checkout') }}</a></li>
                         <li><a href="">{{ trans('homepage.category') }}</a></li>
                         <li><a href="">{{ trans('suggestion') }}</a></li>
                         <li><a href="">{{ trans('homepage.contact') }}</a></li>

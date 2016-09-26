@@ -12,7 +12,9 @@
         "laravel/socialite": "^2.0",
         "laravelcollective/html": "^5.3",
         "jrm2k6/cloudder": "0.2.*",
-        "gloudemans/shoppingcart": "^2.2"
+        "gloudemans/shoppingcart": "^2.2",
+        "wataridori/chatwork-sdk": "^0.1.7",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

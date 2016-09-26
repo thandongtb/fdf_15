@@ -19,6 +19,20 @@ return [
             'disable' => 0,
         ],
     ],
+    'order' => [
+        'status' => [
+            'paid' => 1,
+            'unpaid' => 2,
+            'destroy' => 0,
+        ],
+    ],
+    'item' => [
+        'status' => [
+            'paid' => 1,
+            'unpaid' => 2,
+            'destroy' => 0,
+        ],
+    ],
     'path_cloud_avatar' => 'foods/avatar/',
     'path_cloud_product' => 'foods/product/',
 ];
