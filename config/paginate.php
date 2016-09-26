@@ -11,7 +11,7 @@ return [
     ],
     'product' => [
         'search' => 10,
-        'normal' => 10,
+        'normal' => 8,
     ],
     'activity' => [
         'search' => 5,

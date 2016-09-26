@@ -26,7 +26,7 @@
                     {!! Form::textarea('description', $category->description, ['class' => 'form-control']) !!}
                     <hr>
                     <div class="text-center">
-                        {!! Form::submit(trans('category.update'), ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit(trans('category.update'), ['class' => 'btn btn-success btn-edit-category-submit']) !!}
                         <a href="{!! route('category.index') !!}" class="btn btn-default">
                             {{ trans('category.back') }}
                         </a>

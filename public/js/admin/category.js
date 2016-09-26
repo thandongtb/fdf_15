@@ -32,4 +32,12 @@ $(document).ready(function () {
             });
         });
     });
+
+    $('.btn-edit-category-submit').on('click', function() {
+        startLoading();
+    });
+
+    $('.btn-create-category-submit').on('click', function() {
+        startLoading();
+    });
 });
