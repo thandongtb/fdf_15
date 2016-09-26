@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -34,5 +35,10 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role == config('user.role.admin');
+    }
+
+    public function isCurrent()
+    {
+        return $this->id == Auth::user()->id;
     }
 }

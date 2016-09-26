@@ -8,8 +8,8 @@ use Cloudder;
 
 class ImageService
 {
-    public function uploadCloud($file, $name) {
-        Cloudder::upload($file, config('common.path_cloud_product') . $name);
+    public function uploadCloud($file, $path, $name) {
+        Cloudder::upload($file, $path . $name);
 
         return Cloudder::getResult()['url'];
     }

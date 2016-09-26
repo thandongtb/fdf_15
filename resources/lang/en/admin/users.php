@@ -65,10 +65,12 @@ return [
     'user_email' => 'Email',
     'user_avatar' => 'Avatar',
     'user_password' => 'Password',
+    'user_address' => 'Address',
     'user_password_confirm' => 'Confirm Password',
     'manage_product' => 'Manage Product',
     'manage_orders' => 'Manage Orders',
     'show_task' => 'Show Tasks',
     'modal_task_title' => 'All Tasks',
     'close' => 'Close',
+    'phone' => 'Phone',
 ];

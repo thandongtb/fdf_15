@@ -32,6 +32,8 @@
         </div>
     </div> <!-- End promo area -->
 
+    @include('layouts.message')
+
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">

@@ -47,6 +47,10 @@ return [
         'delete_cart_fail' => 'Delete this item failed. Please try again',
         'find_order_fail' => 'Can not find the order. Please try again',
         'update_product_fail' => 'Update product failed. Please try again',
+        'update_user_success' => 'Update user success.',
+        'update_user_fail' => 'Update user failed. Please try again',
+        'find_user_fail' => 'Cant find this user. Please try again latar',
+        'permission_denied' => 'Permission denied to access this page',
     ],
     'my_account' => 'My Account',
     'wishlist' => 'Wish list',
@@ -96,5 +100,7 @@ return [
     'go_home' => 'Go To Homepage',
     'order_submit' => 'Order Submit',
     'order_confirm' => 'Do you want to checkout this order',
-    'error_title' => 'Errors'
+    'error_title' => 'Errors',
+    'edit_your_password' => 'Edit Your Password',
+    'order_info' => 'Order Information'
 ];
