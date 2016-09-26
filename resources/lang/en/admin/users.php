@@ -33,6 +33,7 @@ return [
     'manage_categories' => 'Manage Categories',
     'view_details' => 'View Details',
     'category_detail' => 'Category Details',
+    'product_detail' => 'Product Details',
     'edit_category' => 'Edit Category',
     'edit_product' => 'Edit Product',
     'all_users' => 'All Users',

@@ -45,13 +45,13 @@
                 </div>
                 <div class="modal-body text-center">
                     <button class="btn btn-primary btn-category-detail">
-                        trans('admin/users.view_details')
+                        {{ trans('admin/users.view_details') }}
                     </button>
                     <button class="btn btn-success btn-category-edit">
-                        trans('admin/users.edit_category')
+                        {{ trans('admin/users.edit_category') }}
                     </button>
                     <button class="btn btn-danger btn-category-delete">
-                        trans('admin/users.delete')
+                        {{ trans('admin/users.delete') }}
                     </button>
                 </div>
                 <div class="modal-footer">

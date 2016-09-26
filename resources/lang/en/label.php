@@ -22,5 +22,7 @@ return [
     'register' => 'Register',
     'confirm_delete' => 'Are you sure?',
     'confirm_delete_category' => 'Do you want to delete this category',
-    'confirm_delete_category_title' => 'Delete the category'
+    'confirm_delete_product' => 'Do you want to delete this product',
+    'confirm_delete_category_title' => 'Delete the category',
+    'confirm_delete_product_title' => 'Delete the product'
 ];

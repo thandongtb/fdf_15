@@ -1,4 +1,8 @@
-<table class="table table-responsive" id="products-table">
+
+<table class="table table-responsive" id="products-table"
+    data-confirm-content="{{ trans('label.confirm_delete_product') }}"
+    data-confirm-title="{{ trans('label.confirm_delete_product_title')
+}}">
     <thead>
         <th>{{ trans('product.id') }}</th>
         <th>{{ trans('product.name') }}</th>
@@ -18,7 +22,11 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->category->name }}</td>
+            <td>
+                <a href="{{ action('Admin\CategoriesController@show', ['id' => $product->category_id]) }}">
+                    {{ $product->category->name }}
+                </a>
+            </td>
             <td>{{ $product->description }}</td>
             <td>
                 <img src="{{ $product->image }}" class="img-product">
@@ -30,9 +38,15 @@
             <td>{{ empty($product->rate_count) ? config('common.default_rate_count') : $product->rate_count }}</td>
             <td>{{ empty($product->view_count) ? config('common.default_view_count') : $product->view_count }}</td>
             <td>
-                <button class="btn btn-success btn-task-product" data-product-id="{{ $product->id }}">
-                    {{ trans('admin/users.show_task') }}
-                </button>
+                {!! Form::open([
+                        'route' => ['product.destroy', $product->id],
+                        'class' => 'form-delete-product',
+                        'method' => 'delete'
+                    ]) !!}
+                        <i class="btn btn-success btn-task-product" data-product-id="{{ $product->id }}">
+                            {{ trans('admin/users.show_task') }}
+                        </i>
+                    {!! Form::close() !!}
             </td>
         </tr>
     @endforeach
