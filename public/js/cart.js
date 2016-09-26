@@ -29,7 +29,6 @@ $(document).ready(function () {
         }
     });
 
-
     $('.plus').on('click', function (e) {
         e.preventDefault();
         var divChangeAmount = $(this).parent();
@@ -53,32 +52,62 @@ $(document).ready(function () {
         $('#amount-' + cartId).html(subTotal);
     });
 
-    $('.btn-add-to-cart').on('click', function(e) {
+    $('.btn-update-cart').on('click', function(e) {
+        e.preventDefault();
+        var formUpdateCart = $('.form-update-cart');
+        var tableUdpateCart = $('.shop-table');
+
+        $.confirm({
+            title: tableUdpateCart.data('confirm-title'),
+            text: tableUdpateCart.data('confirm-content'),
+            confirm: function(button) {
+                startLoading();
+                formUpdateCart.submit();
+            },
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButtonClass: 'btn-info',
+            cancelButtonClass: 'btn-danger'
+        });
+    });
+
+    $('.remove-item').on('click', function(e) {
         e.preventDefault();
 
-        var productId = $(this).data('product-id');
-        var formData = new FormData();
-        formData.append('id', productId);
+        var tableUdpateCart = $('.shop-table');
+        var rowId = $(this).data('row-id');
+        var item = $('#cart-item-' + rowId);
 
-        $.ajax({
-            url: 'cart',
-            processData : false,
-            cache: false,
-            contentType: false,
-            method:'POST',
-            data : formData,
-            success: function(data) {
-
-                if (data.success) {
-                    toastr.success(data.message);
-                    $('.cart-amunt').html(data.total_price);
-                    $('.product-count').html(data.total_prodcut);
-                } else {
-                    toastr.warning(data.message);
-
-                }
+        $.confirm({
+            title: tableUdpateCart.data('confirm-delete-title'),
+            text: tableUdpateCart.data('confirm-detele-content'),
+            confirm: function(button) {
+                startLoading();
+                $.ajax({
+                    url: '/cart/' + rowId,
+                    processData : false,
+                    cache: false,
+                    contentType: false,
+                    method:'DELETE',
+                    data : rowId,
+                    success: function(data) {
+                        if (data.success) {
+                            toastr.success(data.message);
+                            item.empty();
+                            endLoading();
+                        } else {
+                            toastr.warning(data.message);
+                        }
+                    },
+                    error: function() {}
+                });
             },
-            error: function() {}
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButtonClass: 'btn-info',
+            cancelButtonClass: 'btn-danger'
         });
     });
 });

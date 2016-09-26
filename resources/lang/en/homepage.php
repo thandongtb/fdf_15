@@ -41,6 +41,10 @@ return [
     'message' => [
         'add_to_cart_success' => 'You have add this product to shopping cart',
         'add_to_cart_fail' => 'This product not exist. Add failed',
+        'update_cart_success' => 'You have updated your shopping cart successful',
+        'update_cart_fail' => 'Update your shopping cart failed. Please try again',
+        'delete_cart_success' => 'You have deleted this item in your shopping cart successful',
+        'delete_cart_fail' => 'Delete this item failed. Please try again',
     ],
     'my_account' => 'My Account',
     'wishlist' => 'Wish list',
@@ -58,4 +62,10 @@ return [
     'free_ship' => 'Free Shipping',
     'order_total' => 'Order Total',
     'cart_total' => 'Cart Totals',
+    'update_cart' => 'Update Cart',
+    'checkout' => 'Checkout',
+    'confirm_title_update_cart' => 'Update Shopping Cart',
+    'confirm_content_update_cart' => 'Do you want to update your shopping cart',
+    'confirm_title_delete_item' => 'Delete Item From Shopping Cart',
+    'confirm_content_delete_item' => 'Do you want to delete this item from shopping cart',
 ];

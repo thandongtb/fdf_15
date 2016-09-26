@@ -6,12 +6,6 @@ $(document).ready(function () {
         var formData = new FormData();
         formData.append('id', productId);
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
         $.ajax({
             url: 'cart',
             processData : false,
