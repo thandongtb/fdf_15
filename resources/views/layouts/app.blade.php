@@ -33,15 +33,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                        </ul>
-                    </div>
+                    @if (Auth::check())
+                        <div class="user-menu">
+                            <ul>
+                                <li><a href=""><i class="fa fa-user"></i> {{ trans('homepage.my_account') }}</a></li>
+                                <li><a href=""><i class="fa fa-heart"></i> {{ trans('homepage.wishlist') }}</a></li>
+                                <li><a href=""><i class="fa fa-user"></i> {{ trans('homepage.my_cart') }}</a></li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
-
                 <div class="col-md-4">
                     <div class="header-right">
                         <!-- Right Side Of Navbar -->
