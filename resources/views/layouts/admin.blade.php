@@ -127,7 +127,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ action('Admin\CategoriesController@create') }}">
                                         {{ trans('admin/users.create_categories') }}
                                     </a>
                                 </li>
@@ -178,7 +178,9 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-        @include('layouts.message')
+        <div class="col-lg-8 col-lg-offset-2">
+            @include('layouts.message')
+        </div>
         @yield('content')
 
     </div>

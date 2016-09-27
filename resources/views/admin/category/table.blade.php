@@ -12,7 +12,11 @@
     @foreach ($categories as $category)
         <tr>
             <td>{{ $category->id }}</td>
-            <td>{{ $category->name }}</td>
+            <td>
+                <a href="{!! route('category.show', [$category->id]) !!}">
+                   {{ $category->name }}
+                </a>
+            </td>
             <td>{{ $category->description }}</td>
             <td>
                 <div class='btn-group'>
@@ -21,6 +25,12 @@
                         'class' => 'form-delete-category',
                         'method' => 'delete'
                     ]) !!}
+                    <a href="{!! route('category.show', [$category->id]) !!}" class='btn btn-default btn-xs'>
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                    </a>
+                    <a href="{!! route('category.edit', [$category->id]) !!}" class='btn btn-default btn-xs'>
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
                     <i class="glyphicon glyphicon-trash btn-delete-category"></i>
                     {!! Form::close() !!}
                 </div>
