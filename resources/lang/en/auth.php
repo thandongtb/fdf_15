@@ -27,5 +27,5 @@ return [
     'forget_password' => 'Forgot Your Password?',
     'name' => 'Name?',
     'reset_password' => 'Reset Password',
-    'send_password_reset' => 'Send Password Reset Link'
+    'send_password_reset' => 'Send Password Reset Link',
 ];
