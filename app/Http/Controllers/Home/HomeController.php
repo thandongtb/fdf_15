@@ -15,12 +15,11 @@ class HomeController extends Controller
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        $data = $this->userRepository->all();
-
-        return $data;
+        return view('home');
     }
 }

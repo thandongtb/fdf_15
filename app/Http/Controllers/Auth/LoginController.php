@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Socialite;
+use App\Services\UserService;
 
 class LoginController extends Controller
 {
@@ -20,20 +23,35 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $userService;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->userService = $userService;
+    }
+
+    public function redirectToProvider($driver)
+    {
+        return Socialite::driver($driver)->redirect();
+    }
+
+    public function handleProvider($driver) {
+        return $this->userService->handleProvider($driver);
+    }
+
+    public function handleProviderCallback($driver)
+    {
+        return $this->userService->handleProviderCallback($driver);
+    }
+
+    public function login(Request $request)
+    {
+        return $this->userService->login($request);
+    }
+
+    public function register(Request $request)
+    {
+        return $this->userService->register($request);
     }
 }
