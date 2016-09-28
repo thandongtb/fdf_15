@@ -10,7 +10,8 @@
         "nesbot/carbon": "^1.21",
         "fzaninotto/faker": "^1.6",
         "laravel/socialite": "^2.0",
-        "laravelcollective/html": "^5.3"
+        "laravelcollective/html": "^5.3",
+        "jrm2k6/cloudder": "0.2.*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

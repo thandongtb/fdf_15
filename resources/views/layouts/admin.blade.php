@@ -29,7 +29,10 @@
 
     {!! Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') !!}
 
-    {!! Html::style('css/admin/category.css') !!}
+    {!! Html::style('css/admin/main.css') !!}
+
+    {!! Html::style('bower/bootstrap3-dialog/dist/css/bootstrap-dialog.css') !!}
+
 
     @yield('style')
 
@@ -139,16 +142,16 @@
                         <li>
                             <a href="">
                                 <i class="fa fa-file-text-o fa-fw"></i>
-                                {{ trans('admin/users.manage_lessons') }}<span class="fa arrow"></span>
+                                {{ trans('admin/users.manage_product') }}<span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">
+                                    <a href="{{ action('Admin\ProductController@index') }}">
                                         {{ trans('admin/users.all_products') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ action('Admin\ProductController@create') }}">
                                         {{ trans('admin/users.create_product') }}
                                     </a>
                                 </li>
@@ -201,6 +204,8 @@
     <!-- Custom Theme JavaScript -->
     {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.js') !!}
     {!! Html::script('bower/jquery-confirm/jquery.confirm.js') !!}
+
+    {!! Html::script('bower/bootstrap3-dialog/dist/js/bootstrap-dialog.js') !!}
 
     @yield('js')
 

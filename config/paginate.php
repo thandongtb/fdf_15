@@ -9,7 +9,7 @@ return [
         'search' => 10,
         'normal' => 10,
     ],
-    'comment' => [
+    'product' => [
         'search' => 10,
         'normal' => 10,
     ],
