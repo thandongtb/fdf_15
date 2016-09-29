@@ -4,9 +4,6 @@ namespace App\Services;
 
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInterface;
-use Illuminate\Http\Request;
-use Socialite;
-use Auth;
 
 class ProductService
 {

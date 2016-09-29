@@ -49,7 +49,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="">{{ trans('admin/users.admin') }}</a>
-                    <a class="navbar-brand" href="">{{ trans('admin/users.home') }}</a>
+                    <a class="navbar-brand" href="{{ action('Home\HomeController@index') }}">{{ trans('admin/users.home') }}</a>
                 </div>
                 <!-- /.navbar-header -->
 

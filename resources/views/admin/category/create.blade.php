@@ -29,7 +29,7 @@
                     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                     <hr>
                     <div class="text-center">
-                        {!! Form::submit(trans('category.save'), ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit(trans('category.save'), ['class' => 'btn btn-primary btn-edit-category-submit']) !!}
                         <a href="{!! route('category.index') !!}" class="btn btn-default">
                             {{ trans('category.back') }}
                         </a>
@@ -41,4 +41,8 @@
     <!-- /.row -->
 </div>
 
+@endsection
+
+@section('js')
+    {!! Html::script('js/admin/category.js') !!}
 @endsection

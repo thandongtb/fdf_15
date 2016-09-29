@@ -10,22 +10,25 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Services\ProductService;
-use Cloudder;
+use App\Services\ImageService;
 
 class ProductController extends Controller
 {
     protected $productRepository;
     protected $categoryRepository;
     protected $productService;
+    protected $imageService;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
         CategoryRepositoryInterface $categoryRepository,
-        ProductService $productService
+        ProductService $productService,
+        ImageService $imageService
     ) {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
         $this->productService = $productService;
+        $this->imageService = $imageService;
     }
 
     public function index()
@@ -48,9 +51,8 @@ class ProductController extends Controller
         $product = $request->only('name', 'description', 'image', 'price', 'category_id', 'quantity', 'status');
 
         if ($request->hasFile('image')) {
-            $fileName = $request->image;
-            Cloudder::upload($fileName, config('common.path_cloud_product') . $request->name);
-            $product['image'] = Cloudder::getResult()['url'];
+            $file = $request->image;
+            $product['image'] = $this->imageService->uploadCloud($file, $request->name);
         }
 
         if ($this->productRepository->create($product)) {
@@ -91,9 +93,8 @@ class ProductController extends Controller
         $product = $request->only('name', 'description', 'price', 'category_id', 'quantity', 'status');
 
         if ($request->hasFile('image')) {
-            $fileName = $request->image;
-            Cloudder::upload($fileName, config('common.path_cloud_product') . $request->name);
-            $product['image'] = Cloudder::getResult()['url'];
+            $file = $request->image;
+            $product['image'] = $this->imageService->uploadCloud($file, $request->name);
         }
 
         if ($this->productRepository->update($product, $id)) {
