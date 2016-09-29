@@ -21,7 +21,7 @@ return [
     'back' => 'Back',
     'add_product' => 'Add Product',
     'list_product' => 'List Product',
-    'id' => 'Id',
+    'id' => 'ID',
     'action' => 'Action',
     'edit_product' => 'Edit Product',
     'detail_product' => 'Detail Product',
@@ -36,4 +36,5 @@ return [
     'delete_product_fail' => 'Product delete fail',
     'active' => 'Active',
     'disable' => 'Disable',
+    'update' => 'Update Product',
 ];
