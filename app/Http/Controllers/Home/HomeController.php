@@ -8,6 +8,7 @@ use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Cart;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = $this->productRepository->getAllProdcuts();
+        $subTotal = Cart::subtotal();
+        $totalCartItems = Cart::count();
 
-        return view('home.home', compact('products'));
+        return view('home.home', compact('products', 'totalCartItems', 'subTotal'));
     }
 }

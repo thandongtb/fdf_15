@@ -830,13 +830,20 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
     padding: 5px;
     width: 50px;
 }
-.add_to_cart_button {
+
+.btn-add-to-cart {
     background: none repeat scroll 0 0 #5a88ca;
     border: medium none;
     color: #fff;
-    padding: 6px 25px;display: inline-block
+    padding: 6px 25px;display: inline-block;
+    cursor: pointer;
 }
-.add_to_cart_button:hover {background-color: #222;color: #fff;text-decoration: none}
+.btn-add-to-cart:hover {
+    background-color: #088A85;
+    color: #fff;
+    text-decoration: none
+}
+
 form.cart {
     margin-bottom: 25px;
 }
@@ -914,21 +921,21 @@ form.cart {
     top: -56px;
 }
 
-
-
-table.shop_table {
+table.shop-table {
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     margin-bottom: 50px;
     width: 100%;
 }
-table.shop_table th, table.shop_table td {
+
+table.shop-table th, table.shop-table td {
     border-left: 1px solid #ddd;
     border-top: 1px solid #ddd;
     padding: 15px;
     text-align: center;
 }
-table.shop_table th {
+
+table.shop-table th {
     background: none repeat scroll 0 0 #f4f4f4;
     font-size: 15px;
     text-transform: uppercase;
@@ -963,7 +970,8 @@ td.actions div.coupon {
     margin-right: 3%;
     width: 57%;
 }
-.cart_totals {
+
+.cart-totals {
     float: right;
     margin-bottom: 50px;
     width: 40%;
@@ -985,17 +993,18 @@ div.cart-collaterals ul.products li.product {
     position: relative;
     width: 198px;
 }
-.cart_totals table {
+.cart-totals table {
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     width: 100%;
 }
-.cart_totals table th, .cart_totals table td {
+
+.cart-totals table th, .cart-totals table td {
     border-left: 1px solid #ddd;
     border-top: 1px solid #ddd;
     padding: 10px;
 }
-.cart_totals table th {
+.cart-totals table th {
     background: none repeat scroll 0 0 #f4f4f4;
 }
 .onsale {
@@ -1044,15 +1053,16 @@ div.cart-collaterals ul.products li.product .price ins {
     margin-left: 30px;
     width: 360px;
 }
-#customer_details label {
+
+#customer-details label {
     display: block;
     margin: 0 0 5px;
 }
-#customer_details input[type="text"], #customer_details textarea, .shipping_calculator input[type=text] {
+#customer-details input[type="text"], #customer-details textarea, .shipping-calculator input[type=text] {
     margin-bottom: 10px;
     width: 100%;
 }
-#customer_details h3 {
+#customer-details h3 {
     color: #5a88ca;
     font-size: 20px;
     text-transform: uppercase;
@@ -1062,26 +1072,28 @@ div.cart-collaterals ul.products li.product .price ins {
     margin-bottom: 50px;
     padding: 15px;
 }
-#order_review_heading {
+
+#order-review-heading {
     color: #5a88ca;
     font-size: 20px;
     text-transform: uppercase;
 }
-#payment ul.payment_methods {
+
+#payment ul.payment-methods {
     list-style: outside none none;
     margin: 0 0 30px;
     padding: 0;
 }
-#payment ul.payment_methods li {
+
+#payment ul.payment-methods li {
     margin-bottom: 15px;
 }
-a.about_paypal {
+a.about-paypal {
     font-size: 12px;
     margin-left: 15px;
 }
 
-
-#customer_details select, .shipping_calculator select {
+#customer-details select, .shipping-calculator select {
     border: 1px solid #ddd;
     margin-bottom: 15px;
     padding: 10px;
@@ -1089,24 +1101,24 @@ a.about_paypal {
 }
 
 
-table.shop_table td.product-remove a {
+table.shop-table td.product-remove a {
     display: inline-block;
     padding: 0 5px 2px;
     text-transform: uppercase;
 }
 
 
-table.shop_table td.product-remove a:hover {color: #fff;background: red;text-decoration: none}
-table.shop_table td.product-name a{color: #222;}
-table.shop_table td.product-name a:hover {color: #5a88ca;text-decoration: none}
+table.shop-table td.product-remove a:hover {color: #fff;background: red;text-decoration: none}
+table.shop-table td.product-name a{color: #222;}
+table.shop-table td.product-name a:hover {color: #5a88ca;text-decoration: none}
 div.quantity input.plus:hover, div.quantity input.minus:hover {background-color: #222}
 div.cart-collaterals ul.products li.product a:hover h3 {color: #5a88ca}
 div.cart-collaterals ul.products li.product a:hover {text-decoration: none}
 
-div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background-color: #222}
+div.cart-collaterals ul.products li.product:hover .add-to-cart-button{background-color: #222}
 
 
-.cart-collaterals .shipping_calculator {
+.cart-collaterals .shipping-calculator {
     float: right;
     width: 40%;
 }

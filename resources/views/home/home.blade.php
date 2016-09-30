@@ -1,54 +1,11 @@
 @extends('layouts.app')
 
+@section('css')
+    {!! Html::style('bower/toastr/toastr.css') !!}
+@endsection()
+
 @section('content')
-    <div class="site-branding-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="logo col-lg-offset-2">
-                        <h1>
-                            <a href="">
-                                <img src="https://www.foodbankccs.org/images/logos/for-download/FBCCS-Logo.png" class="img-logo">
-                            </a>
-                        </h1>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="shopping-item">
-                        <a href="cart.html">{{ trans('homepage.cart') }} - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
-
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only"{{ trans('homepage.toggle') }}</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{ action('Home\HomeController@index') }}">{{ trans('homepage.home') }}</a></li>
-                        <li><a href="">{{ trans('homepage.shop_page') }}</a></li>
-                        <li><a href="">{{ trans('homepage.cart') }}</a></li>
-                        <li><a href="">{{ trans('homepage.checkout') }}</a></li>
-                        <li><a href="">{{ trans('homepage.category') }}</a></li>
-                        <li><a href="">{{ trans('suggestion') }}</a></li>
-                        <li><a href="">{{ trans('homepage.contact') }}</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End mainmenu area -->
-
+    @include('home.header')
     <div class="promo-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -56,19 +13,19 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo2">
                         <i class="fa fa-truck"></i>
-                        <p>{{ trans('homepage.free_ship') }}</p>
+                        <p>{{ trans('homepage.free-ship') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo3">
                         <i class="fa fa-lock"></i>
-                        <p>{{ trans('homepage.secure_payment') }}</p>
+                        <p>{{ trans('homepage.secure-payment') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo4">
                         <i class="fa fa-gift"></i>
-                        <p>{{ trans('homepage.new_product') }}</p>
+                        <p>{{ trans('homepage.new-product') }}</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +48,7 @@
                         </div>
 
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="{{ $product->quantity }}"  data-product-id="{{ $product->id }}" rel="nofollow" href="">{{ trans('homepage.add_to_cart') }}</a>
+                            <a class="btn-add-to-cart" data-product-id="{{ $product->id }}" rel="nofollow">{{ trans('homepage.add-to-cart') }}</a>
                         </div>
                     </div>
                 </div>
@@ -102,5 +59,10 @@
         </div>
     </div>
 
-    @endsection
+@endsection
+
+@section('js')
+    {!! Html::script('js/homepage.js') !!}
+    {!! Html::script('bower/toastr/toastr.js') !!}
+@endsection
 

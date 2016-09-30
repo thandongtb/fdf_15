@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-Route::resource('/home', 'Home\HomeController');
+Route::resource('home', 'Home\HomeController');
+
+Route::resource('cart', 'Home\ShoppingCartController');
 
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
