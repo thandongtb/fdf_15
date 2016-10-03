@@ -17,6 +17,8 @@ Route::resource('home', 'Home\HomeController');
 
 Route::resource('cart', 'Home\ShoppingCartController');
 
+Route::resource('order', 'Home\OrderController');
+
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');

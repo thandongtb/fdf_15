@@ -110,4 +110,8 @@ $(document).ready(function () {
             cancelButtonClass: 'btn-danger'
         });
     });
+
+    $('.checkout-button').on('click', function() {
+        window.location.href = 'order';
+    });
 });

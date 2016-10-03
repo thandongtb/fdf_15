@@ -18,4 +18,9 @@ class Order extends Model
         'shipping_address',
         'status',
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

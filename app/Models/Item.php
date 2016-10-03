@@ -16,4 +16,9 @@ class Item extends Model
         'price',
         'status',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

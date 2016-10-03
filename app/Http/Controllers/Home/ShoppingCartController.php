@@ -17,6 +17,7 @@ class ShoppingCartController extends Controller
         ProductRepositoryInterface $productRepository
     ) {
         $this->productRepository = $productRepository;
+        $this->middleware('auth');
     }
 
     public function index()
