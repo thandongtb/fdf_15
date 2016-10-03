@@ -58,4 +58,27 @@ class ShoppingCartController extends Controller
             ]);
         }
     }
+
+    public function update(Request $request)
+    {
+        $data = $request->except('_method', '_token');
+
+        foreach ($data as $rowId => $quantity) {
+            $quantity = intval($quantity);
+            Cart::update($rowId, $quantity);
+        }
+
+        return redirect()->action('Home\ShoppingCartController@index')
+            ->withSuccess(trans('homepage.message.update_cart_success'));
+    }
+
+    public function destroy($rowId)
+    {
+        Cart::remove($rowId);
+
+        return Response::json([
+            'success' => true,
+            'message' => trans('homepage.message.delete_cart_success'),
+        ]);
+    }
 }

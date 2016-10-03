@@ -13,19 +13,19 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo2">
                         <i class="fa fa-truck"></i>
-                        <p>{{ trans('homepage.free-ship') }}</p>
+                        <p>{{ trans('homepage.free_ship') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo3">
                         <i class="fa fa-lock"></i>
-                        <p>{{ trans('homepage.secure-payment') }}</p>
+                        <p>{{ trans('homepage.secure_payment') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo4">
                         <i class="fa fa-gift"></i>
-                        <p>{{ trans('homepage.new-product') }}</p>
+                        <p>{{ trans('homepage.new_product') }}</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,9 @@
                         </div>
 
                         <div class="product-option-shop">
-                            <a class="btn-add-to-cart" data-product-id="{{ $product->id }}" rel="nofollow">{{ trans('homepage.add-to-cart') }}</a>
+                            <a class="btn-add-to-cart" data-product-id="{{ $product->id }}" rel="nofollow">
+                                {{ trans('homepage.add_to_cart') }}
+                            </a>
                         </div>
                     </div>
                 </div>

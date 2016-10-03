@@ -7,6 +7,8 @@
 @section('content')
     @include('home.header')
 
+    @include('layouts.errors')
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
@@ -19,25 +21,18 @@
         </div>
     </div> <!-- End Page title area -->
 
-
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="single-sidebar">
-                        <h2 class="sidebar-title">{{ trans('homepage.search_product') }}</h2>
-                        <form action="#">
-                            <input type="text" placeholder="{{ trans('homepage.search-product') }} ..">
-                            <input type="submit" value="{{ trans('homepage.search') }}">
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-md-8">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <table cellspacing="0" class="shop-table cart">
+                            <table cellspacing="0" class="shop-table cart"
+                                data-confirm-title="{{ trans('homepage.confirm_title_update_cart') }}"
+                                data-confirm-content="{{ trans('homepage.confirm_content_update_cart') }}"
+                                data-confirm-delete-title="{{ trans('homepage.confirm_title_delete_item') }}"
+                                data-confirm-detele-content="{{ trans('homepage.confirm_content_delete_item') }}">
                                 <thead>
                                     <tr>
                                         <th class="product-remove">&nbsp;</th>
@@ -48,11 +43,17 @@
                                         <th class="product-subtotal">{{ trans('homepage.total') }}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+
+                                <tbody id="shopping-cart-body">
+                                    {!! Form::open([
+                                        'route' => ['cart.update', 1],
+                                        'class' => 'form-update-cart',
+                                        'method' => 'PATCH'
+                                    ]) !!}
                                     @foreach ($carts as $key => $cart)
-                                    <tr class="cart-item" data-row-id="{{ $key }}">
+                                    <tr class="cart-item" data-row-id="{{ $key }}" id="cart-item-{{ $key }}">
                                         <td class="product-remove" data-cart-id="{{ $cart->id }}">
-                                            <a title="{{ trans('homepage.remove-item') }}" class="remove" href="">×</a>
+                                            <a title="{{ trans('homepage.remove-item') }}" class="remove remove-item" href="" data-row-id="{{ $key }}">×</a>
                                         </td>
 
                                         <td class="product-thumbnail" data-cart-id="{{ $cart->id }}">
@@ -66,33 +67,57 @@
                                         </td>
 
                                         <td class="product-price">
-                                            <span class="amount" data-price="{{ $cart->price }}" id="cart-price-{{ $cart->id }}">{{ $cart->price }} </span> {{ trans('homepage.dollar') }}
+                                            <span class="amount" data-price="{{ $cart->price }}" id="cart-price-{{ $cart->id }}">
+                                                {{ $cart->price }}
+                                            </span>
+                                            {{ trans('homepage.dollar') }}
                                         </td>
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons-added" data-cart-id="{{ $cart->id }}">
-                                                <input type="button" class="minus" value="-">
-                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ $cart->qty }}" min="0" step="1">
-                                                <input type="button" class="plus" value="+">
+                                                {!! Form::button('-', [
+                                                    'class' => 'minus',
+                                                ]) !!}
+
+                                                {!! Form::number($key, $cart->qty, [
+                                                    'class' => 'input-text qty text',
+                                                    'title' => 'Qty',
+                                                    'size' => 4,
+                                                    'step' => 1,
+                                                ]) !!}
+                                                {!! Form::button('+', [
+                                                    'class' => 'plus',
+                                                ]) !!}
                                             </div>
                                         </td>
 
                                         <td class="product-subtotal">
-                                            <span class="amount" id="amount-{{ $cart->id }}" data-subtotal="{{ floatval($cart->price) * intval($cart->qty) }}">{{ floatval($cart->price) * intval($cart->qty) }}</span> {{ trans('homepage.dollar') }}
+                                            <span class="amount" id="amount-{{ $cart->id }}" data-subtotal="{{ floatval($cart->price) * intval($cart->qty) }}">
+                                                {{ floatval($cart->price) * intval($cart->qty) }}
+                                            </span>
+                                            {{ trans('homepage.dollar') }}
                                         </td>
                                     </tr>
                                     @endforeach
+                                    {!! Form::close() !!}
                                     <tr>
                                         <td class="actions" colspan="6">
-                                            <input type="submit" value="Update Cart" name="update-cart" class="button">
-                                            <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+                                            {!! Form::button(trans('homepage.update_cart'), [
+                                                'class' => 'btn-update-cart btn btn-primary',
+                                                'value' => trans('homepage.update_cart'),
+                                                'name' => 'update-cart',
+                                            ]) !!}
+                                            {!! Form::button(trans('homepage.checkout'), [
+                                                'class' => 'checkout-button button alt wc-forward btn btn-success',
+                                                'value' => trans('homepage.checkout'),
+                                                'name' => 'proceed',
+                                            ]) !!}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <div class="cart-collaterals">
-
                                 <div class="cart-totals ">
                                     <h2>{{ trans('homepage.cart_total') }}</h2>
 
@@ -127,8 +152,6 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 
 @section('js')

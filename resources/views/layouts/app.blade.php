@@ -49,11 +49,23 @@
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
-                                <li><a href="{{ action('Auth\LoginController@showLoginForm') }}">{{ trans('homepage.login') }}</a></li>
-                                <li><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">{{ trans('homepage.register') }}</a></li>
+                                <li>
+                                    <a href="{{ action('Auth\LoginController@showLoginForm') }}">
+                                        {{ trans('homepage.login') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">
+                                        {{ trans('homepage.register') }}
+                                    </a>
+                                </li>
                             @else
                                 @if (Auth::user()->isAdmin())
-                                    <li><a href="{{ action('Admin\AdminController@index') }}">{{ trans('homepage.to_admin_page') }}</a></li>
+                                    <li>
+                                        <a href="{{ action('Admin\AdminController@index') }}">
+                                            {{ trans('homepage.to_admin_page') }}
+                                        </a>
+                                    </li>
                                 @endif
                                 <li class="dropdown">
                                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
