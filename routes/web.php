@@ -40,4 +40,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('product', 'Admin\ProductController');
 
     Route::resource('order', 'Admin\OrderController');
+
+    Route::resource('user', 'Admin\UsersController');
 });

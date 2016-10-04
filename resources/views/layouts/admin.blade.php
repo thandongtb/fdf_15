@@ -33,6 +33,8 @@
 
         {!! Html::style('assets/jLoader/introLoader.min.css') !!}
 
+        {!! Html::style('bower/toastr/toastr.css') !!}
+
         @yield('style')
 
     </head>
@@ -88,7 +90,8 @@
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <input type="text" class="form-control"
+                                    placeholder="Search...">
                                     <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
@@ -106,13 +109,8 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="">
+                                        <a href="{{ action('Admin\UsersController@index') }}">
                                             {{ trans('admin/users.all_users') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            {{ trans('admin/users.create') }}
                                         </a>
                                     </li>
                                 </ul>
@@ -214,6 +212,8 @@
         {!! Html::script('assets/jLoader/helpers/spin.min.js') !!}
 
         {!! Html::script('js/loader.js') !!}
+
+        {!! Html::script('bower/toastr/toastr.js') !!}
 
         @yield('js')
     </body>
