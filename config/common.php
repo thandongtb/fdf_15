@@ -33,6 +33,11 @@ return [
             'destroy' => 0,
         ],
     ],
+    'filter' => [
+        'all' => 1,
+        'best_price' => 2,
+        'best_selling' => 3,
+    ],
     'path_cloud_avatar' => 'foods/avatar/',
     'path_cloud_product' => 'foods/product/',
     'default_product_image' => 'http://trinhthien.com.vn/images/commont/noimage.png',

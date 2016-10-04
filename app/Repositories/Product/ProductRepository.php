@@ -39,4 +39,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->orderby('created_at', 'desc')
             ->paginate(config('paginate.product.normal'));
     }
+
+    public function getBestPrice()
+    {
+        return $this->model->orderBy('price', 'desc')
+            ->paginate(config('paginate.product.normal'));
+    }
 }
