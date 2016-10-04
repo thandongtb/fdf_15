@@ -19,6 +19,7 @@ class CommentsController extends Controller
     ) {
         $this->productRepository = $productRepository;
         $this->commentRepository = $commentRepository;
+        $this->middleware('auth');
     }
 
     public function store(StoreCommentRequest $request)

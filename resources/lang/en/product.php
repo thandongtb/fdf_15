@@ -37,4 +37,5 @@ return [
     'active' => 'Active',
     'disable' => 'Disable',
     'update' => 'Update Product',
+    'user_suggest' => 'User Suggest',
 ];

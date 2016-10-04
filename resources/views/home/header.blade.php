@@ -57,8 +57,8 @@
                                 {{ trans('homepage.checkout') }}
                             </a>
                         </li>
-                        <li>
-                            <a href="">{{ trans('suggestion') }}</a>
+                        <li class="suggest-menu">
+                            <a href="{{ action('Home\SuggestController@create') }}">{{ trans('suggestion') }}</a>
                         </li>
                         <li>
                             <a href="">{{ trans('homepage.contact') }}</a>

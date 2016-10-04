@@ -124,4 +124,7 @@ return [
     'best_price' => 'Best Price Product',
     'best_selling' => 'Best Selling Product',
     'download_order' => 'Download Order With Excel',
+    'suggest_error' => 'Send suggestion failed',
+    'suggest_success' => 'Send suggestion successful',
+    'suggest' => 'Suggest Product To Admin',
 ];

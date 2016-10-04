@@ -175,6 +175,21 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-font fa-fw"></i>
+                                        {{ trans('admin/users.manage_suggests') }}
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ action('Admin\SuggestController@index') }}">
+                                            {{ trans('admin/users.all_suggests') }}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

@@ -25,4 +25,8 @@ return [
         'search' => 5,
         'normal' => 10,
     ],
+    'suggest' => [
+        'search' => 5,
+        'normal' => 10,
+    ],
 ];
