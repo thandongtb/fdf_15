@@ -1,4 +1,3 @@
-
 <table class="table table-responsive" id="products-table"
     data-confirm-content="{{ trans('label.confirm_delete_product') }}"
     data-confirm-title="{{ trans('label.confirm_delete_product_title')

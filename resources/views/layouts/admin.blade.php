@@ -72,7 +72,8 @@
                                     {{ trans('homepage.logout') }}
                                 </a>
 
-                                {{ Form::open(['url' => '/logout', 'method' => 'post', 'id' => 'logout-form', 'class' => 'display-none']) }}
+                                {{ Form::open(['url' => '/logout', 'method' => 'post', '
+                                    id' => 'logout-form', 'class' => 'display-none']) }}
                                     {{ csrf_field() }}
                                 {{ Form::close() }}
                             </li>
@@ -100,7 +101,8 @@
                             <li>
                                 <a href="">
                                     <i class="fa fa-users fa-fw"></i>
-                                    {{ trans('admin/users.manage_users') }}<span class="fa arrow"></span>
+                                        {{ trans('admin/users.manage_users') }}
+                                    <span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
@@ -120,7 +122,8 @@
                             <li>
                                 <a href="">
                                     <i class="fa fa-tasks fa-fw"></i>
-                                    {{ trans('admin/users.manage_categories') }}<span class="fa arrow"></span>
+                                        {{ trans('admin/users.manage_categories') }}
+                                    <span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
@@ -162,11 +165,12 @@
                             <li>
                                 <a href="">
                                     <i class="fa fa-font fa-fw"></i>
-                                    {{ trans('admin/users.manage_orders') }}<span class="fa arrow"></span>
+                                        {{ trans('admin/users.manage_orders') }}
+                                    <span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="">
+                                        <a href="{{ action('Admin\OrderController@index') }}">
                                             {{ trans('admin/users.all_orders') }}
                                         </a>
                                     </li>

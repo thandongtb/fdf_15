@@ -23,4 +23,19 @@ class Order extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function isUnpaid()
+    {
+        return $this->status == config('common.order.status.unpaid');
+    }
+
+    public function isPaid()
+    {
+        return $this->status == config('common.order.status.paid');
+    }
+
+    public function isCancel()
+    {
+        return $this->status == config('common.order.status.destroy');
+    }
 }
