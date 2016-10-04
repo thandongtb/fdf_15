@@ -20,6 +20,10 @@
 }
 a:focus { outline: 0px solid }
 
+.added-to-cart {
+    background: green !important;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -35,6 +39,10 @@ img {
 }
 .check_no_cart {
     color: red;
+}
+.product-image {
+    border-radius: 10px;
+    width: 100%;
 }
 .img-product-show {
     width: 80%;

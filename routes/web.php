@@ -21,6 +21,10 @@ Route::resource('order', 'Home\OrderController');
 
 Route::resource('user', 'Home\UsersController');
 
+Route::resource('product', 'Home\ProductController');
+
+Route::resource('comment', 'Home\CommentsController');
+
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');

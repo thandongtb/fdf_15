@@ -13,6 +13,10 @@ class Comment extends Model
         'user_id',
         'product_id',
         'content',
-        'rate',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
