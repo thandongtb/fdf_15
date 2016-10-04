@@ -10,6 +10,19 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">{{ trans('homepage.search_product') }}</h2>
+                        <input type="text" class="form-control"
+                            id="inputString" placeholder="Search products...">
+                        <div class="text-right">
+                            <button class="btn btn-primary" id="search-button">
+                                {{ trans('homepage.search') }}
+                            </button>
+                        </div>
+                    </div>
+                    <div id="suggestions"></div>
+                </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-promo promo2">
                         <i class="fa fa-truck"></i>
@@ -160,5 +173,6 @@
     {!! Html::script('bower/toastr/toastr.js') !!}
     {!! Html::script('assets/JRate/jRate.js') !!}
     {!! Html::script('bower/filterizr/dist/jquery.filterizr.min.js') !!}
+    {!! Html::script('js/search.js') !!}
 @endsection
 

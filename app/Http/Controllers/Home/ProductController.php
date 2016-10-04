@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,8 @@ use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Services\ProductService;
 use Cart;
+use View;
+use Response;
 
 class ProductController extends Controller
 {
@@ -44,5 +47,27 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')
             ->withErrors(trans('product.product_not_found'));
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $name = $request->name;
+        $data = $this->productRepository->searchName($name);
+
+        if ($data) {
+            $htmlSearch = View::make('layouts.search-result', [
+                'data' => $data
+            ])->render();
+
+            return Response::json([
+                'success' => true,
+                'search_result' => $htmlSearch
+            ]);
+        }
+
+        return Response::json([
+            'success' => false,
+            'message' => trans('homepage.message.find_product_fail')
+        ]);
     }
 }

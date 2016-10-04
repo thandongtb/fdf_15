@@ -45,4 +45,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $this->model->orderBy('price', 'desc')
             ->paginate(config('paginate.product.normal'));
     }
+
+    public function searchName($name)
+    {
+        return $this->model->where('name', 'like', "%$name%")
+            ->get();
+    }
 }
