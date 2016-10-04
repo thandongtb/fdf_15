@@ -7,16 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use DB;
 
 class CategoriesController extends Controller
 {
     protected $categoryRepository;
+    protected $productRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(
+        CategoryRepositoryInterface $categoryRepository,
+        ProductRepositoryInterface $productRepository)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->productRepository = $productRepository;
     }
 
     public function index()
@@ -28,20 +34,20 @@ class CategoriesController extends Controller
 
     public function destroy($id)
     {
-        $category = $this->categoryRepository->find($id);
+        $category = $this->categoryRepository->findCategoryWithProduct($id);
 
         if (!$category) {
             return redirect()->action('Admin\CategoriesController@index')
                 ->withErrors(trans('category.category_not_found'));
         }
 
-        if ($category->delete()) {
+        if ($this->categoryRepository->deleteCategoryWithProduct($category)) {
             return redirect()->action('Admin\CategoriesController@index')
                 ->withSuccess(trans('category.delete_category_successfully'));
         }
 
         return redirect()->action('Admin\CategoriesController@index')
-            ->withErrors(trans('category.delete_category_fail'));
+                ->withErrors(trans('category.delete_category_fail'));
     }
 
     public function create()

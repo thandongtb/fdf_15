@@ -40,4 +40,17 @@ $(document).ready(function () {
     $('.btn-create-product-submit').on('click', function() {
         startLoading();
     });
+
+    $('#create-product-image').on('click', function() {
+        $('#file-product-image').trigger('click');
+    });
+
+    $('#file-product-image').change(function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+             $( '#create-product-image' ).attr('src', e.target.result);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
 });
+

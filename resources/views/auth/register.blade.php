@@ -35,6 +35,32 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            {{ Form::label('address', trans('auth.address'), ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::text('address', '', ['id' => 'address', 'class' => 'form-control']) }}
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('phones') ? ' has-error' : '' }}">
+                            {{ Form::label('phone', trans('auth.phone'), ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                {{ Form::text('phone', '', ['id' => 'phone', 'class' => 'form-control']) }}
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             {{ Form::label('password', trans('auth.password'), ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">

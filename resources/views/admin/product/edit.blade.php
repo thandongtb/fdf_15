@@ -26,32 +26,57 @@
                         {!! Form::text('name', null, [
                             'class' => 'form-control'
                         ]) !!}
+
+                        @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                         <hr>
                         {!! Form::label('category_id', trans('product.category')) !!}
                         {!! Form::select('category_id', $categories, null, [
                             'class' => 'form-control'
                         ]) !!}
+
                         <hr>
                         {!! Form::label('description', trans('product.description')) !!}
                         {!! Form::textarea('description', null, [
                             'class' => 'form-control',
                             'rows'=> 5
                         ]) !!}
+
+                        @if ($errors->has('description'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('description') }}</strong>
+                            </span>
+                        @endif
                         <hr>
                     </div>
                     <div class="col-lg-6">
                         {!! Form::label('quantity', trans('product.quantity')) !!}
                         {!! Form::number('quantity', null, [
                             'class' => 'form-control',
-                            'min' => config('settings.min_quantity_product')
+                            'min' => config('common.min_quantity_product')
                         ]) !!}
+
+                        @if ($errors->has('quantity'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('quantity') }}</strong>
+                            </span>
+                        @endif
                         <hr>
                         {!! Form::label('price', trans('product.price')) !!}
                         {!! Form::number('price', null, [
                             'class' => 'form-control',
-                            'step' => config('settings.step_of_price'),
-                            'min' => config('settings.min_price_product'
+                            'step' => config('common.step_of_price'),
+                            'min' => config('common.min_price_product'
                         )]) !!}
+
+                        @if ($errors->has('price'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('price') }}</strong>
+                            </span>
+                        @endif
                         <hr>
                         {!! Form::label('status', trans('product.status')) !!}
                         {!! Form::select('status', $optionStatus, null, [
@@ -59,7 +84,18 @@
                         ]) !!}
                         <hr>
                         {!! Form::label('image', trans('product.image')) !!}
-                        {!! Form::file('image') !!}
+                        {!! Form::file('image', [
+                            'class' => 'hide',
+                            'id' => 'file-product-image'
+                        ]) !!}
+
+                        <img alt="{{ $product->name }}" src="{{ is_null($product->image) ? config('common.default_product_image') : $product->image }}" class="img-create-product img-responsive" id="create-product-image">
+
+                        @if ($errors->has('image'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('image') }}</strong>
+                            </span>
+                        @endif
                         <hr>
                     </div>
                     <div class="text-center">

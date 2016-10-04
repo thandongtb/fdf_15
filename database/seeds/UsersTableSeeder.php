@@ -22,6 +22,8 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'email' => $faker->email,
                 'name' => $faker->name,
+                'address' => $faker->address,
+                'phone' => $faker->e164PhoneNumber,
                 'password' => Hash::make('123456'),
                 'role' => config('user.role.user'),
             ]);
@@ -30,6 +32,8 @@ class UsersTableSeeder extends Seeder
         User::create([
             'email' => 'admin@framgia.com',
             'name' => 'Admin',
+            'address' => $faker->address,
+            'phone' => $faker->e164PhoneNumber,
             'password' => Hash::make('123456'),
             'role' => config('user.role.admin'),
         ]);

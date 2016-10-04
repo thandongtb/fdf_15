@@ -35,4 +35,5 @@ return [
     ],
     'path_cloud_avatar' => 'foods/avatar/',
     'path_cloud_product' => 'foods/product/',
+    'default_product_image' => 'http://trinhthien.com.vn/images/commont/noimage.png',
 ];

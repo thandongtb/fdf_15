@@ -95,5 +95,6 @@ return [
     'no_cart' => 'No Item In You Shopping Cart',
     'go_home' => 'Go To Homepage',
     'order_submit' => 'Order Submit',
-    'order_confirm' => 'Do you want to checkout this order'
+    'order_confirm' => 'Do you want to checkout this order',
+    'error_title' => 'Errors'
 ];
