@@ -24,6 +24,9 @@ img {
     max-width: 100%;
     height: auto;
 }
+.help-block {
+    color: red;
+}
 .img-logo {
     width: 40%;
 }

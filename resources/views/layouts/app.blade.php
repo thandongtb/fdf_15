@@ -20,6 +20,8 @@
 
     {!! Html::style('assets/jLoader/introLoader.min.css') !!}
 
+    {!! Html::style('bower/toastr/toastr.css') !!}
+
     @yield('css')
 
     <!-- Scripts -->
@@ -36,9 +38,18 @@
                     @if (Auth::check())
                         <div class="user-menu">
                             <ul>
-                                <li><a href=""><i class="fa fa-user"></i> {{ trans('homepage.my_account') }}</a></li>
-                                <li><a href=""><i class="fa fa-heart"></i> {{ trans('homepage.wishlist') }}</a></li>
-                                <li><a href=""><i class="fa fa-user"></i> {{ trans('homepage.my_cart') }}</a></li>
+                                <li>
+                                    <a href="{{ action('Home\UsersController@show', [
+                                        'id' => Auth::user()->id
+                                    ]) }}">
+                                        <i class="fa fa-user"></i> {{ trans('homepage.my_account') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ action('Home\ShoppingCartController@index') }}">
+                                        <i class="fa fa-user"></i> {{ trans('homepage.my_cart') }}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     @endif
@@ -68,13 +79,17 @@
                                     </li>
                                 @endif
                                 <li class="dropdown">
-                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <a href="javascript:;" class="dropdown-toggle"
+                                        data-toggle="dropdown" role="button"
+                                        aria-expanded="false">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="">
+                                            <a href="{{ action('Home\UsersController@show', [
+                                                    'id' => Auth::user()->id
+                                                ]) }}">
                                                 {{ trans('homepage.user_profile') }}
                                             </a>
                                         </li>
@@ -85,8 +100,13 @@
                                                 {{ trans('homepage.logout') }}
                                             </a>
 
-                                            {{ Form::open(['url' => '/logout', 'method' => 'post', 'id' => 'logout-form', 'class' => 'display-none']) }}
-                                                {{ csrf_field() }}
+                                            {{ Form::open([
+                                                'url' => '/logout',
+                                                'method' => 'post',
+                                                'id' => 'logout-form',
+                                                'class' => 'display-none'
+                                            ]) }}
+                                            {{ csrf_field() }}
                                             {{ Form::close() }}
                                         </li>
                                     </ul>
@@ -99,7 +119,6 @@
         </div>
     </div> <!-- End header area -->
 
-    @include('layouts.message')
     @yield('content')
 
     <!-- Scripts -->
@@ -126,6 +145,8 @@
     {!! Html::script('assets/jLoader/helpers/spin.min.js') !!}
 
     {!! Html::script('js/loader.js') !!}
+
+    {!! Html::script('bower/toastr/toastr.js') !!}
 
     @yield('js')
 </body>

@@ -56,7 +56,7 @@ class OrderController extends Controller
 
             DB::commit();
             Mail::send('emails.order', ['order' => $order, 'items' => $items], function ($message) {
-                $message->to(Auth::user()->email)->subject('Order Information');
+                $message->to(Auth::user()->email)->subject(trans('homepage.order_info'));
             });
             Cart::destroy();
         } catch (Exception $e) {

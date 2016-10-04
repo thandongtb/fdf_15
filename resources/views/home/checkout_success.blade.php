@@ -36,7 +36,6 @@
                         <p>{{ trans('homepage.check_mail') }}</p>
                         <hr>
                     </div>
-
                     <div class="woocommerce-info">
                         <a class="showlogin"
                             data-toggle="collapse" href="#order-detail" aria-expanded="false"
