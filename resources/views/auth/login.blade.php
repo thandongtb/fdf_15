@@ -15,7 +15,10 @@
                             {{ Form::label('email', trans('auth.email'), ['class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                {{ Form::email('email', old('email'), ['class' => 'form-control']) }}
+                                {{ Form::email('email', old('email'), [
+                                    'class' => 'form-control',
+                                    'required' => 'required'
+                                ]) }}
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -26,10 +29,15 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            {{ Form::label('password', trans('auth.password'), ['class' => 'col-md-4 control-label']) }}
+                            {{ Form::label('password', trans('auth.password'), [
+                                'class' => 'col-md-4 control-label']) }}
 
                             <div class="col-md-6">
-                                {{ Form::password('password', ['id' => 'password', 'class' => 'form-control']) }}
+                                {{ Form::password('password', [
+                                    'id' => 'password',
+                                    'class' => 'form-control',
+                                    'required' => 'required'
+                                ]) }}
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

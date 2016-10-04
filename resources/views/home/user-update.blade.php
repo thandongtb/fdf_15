@@ -19,8 +19,8 @@
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            {!! Form::model($user, ['route' => [
-                'user.update', $user->id],
+            {!! Form::model($user, ['action' => [
+                'Home\UsersController@update', $user->id],
                 'method' => 'PUT',
                 'class' => 'form-horizontal',
                 'files' => true

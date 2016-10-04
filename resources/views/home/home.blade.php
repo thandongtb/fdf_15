@@ -119,8 +119,14 @@
                                     $product->product ? $product->product->id : $product->id
                                 }}"
                                 name="all-rate-product"
-                                data-rating="{{ $product->rate_count == 0 ? 0 :
-                                $product->rate_total / $product->rate_count }}">
+                                data-rating="{{
+                                    $product->product ?
+                                        ($product->product->rate_count == 0 ? 0 :
+                                        $product->product->rate_total / $product->product->rate_count)
+                                    :
+                                        ($product->rate_count == 0 ? 0 :
+                                        $product->rate_total / $product->rate_count)
+                                }}">
                             </div>
                         </div>
                         <div class="product-carousel-price text-price">

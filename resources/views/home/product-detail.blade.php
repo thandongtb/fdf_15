@@ -1,5 +1,13 @@
 @extends('layouts.app')
-
+@section('meta')
+    <meta property="fb:app_id" content="325537304461967"/>
+    <meta property="og:url" content="{{ action('Home\ProductController@show',
+    ['id' => $product->id]) }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title"  ontent="{{ $product->name }}" />
+    <meta property="og:description" content="{{ $product->description }}?" />
+    <meta property="og:image" content="{{ $product->image }}" />
+@endsection
 @section('css')
     {!! Html::style('bower/toastr/toastr.css') !!}
     {!! Html::style('css/comment.css') !!}
@@ -7,6 +15,8 @@
 
 @section('content')
     @include('home.header')
+
+    <div id="fb-root"></div>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -47,6 +57,18 @@
                                     <div class="product-main-img">
                                         <img src="{{ $product->image }}" alt="">
                                     </div>
+                                </div>
+                                <hr>
+                                <div class="fb-like"
+                                    data-href="{{ action('Home\ProductController@show',
+                                        ['id' => $product->id]) }}"
+                                    data-layout="standard" data-action="like"
+                                    data-size="small" data-show-faces="true"
+                                    data-share="true"></div>
+                                    <div class="fb-comments"
+                                    data-href="{{ action('Home\ProductController@show',
+                                        ['id' => $product['id']]) }}"
+                                    data-width="100%">
                                 </div>
                             </div>
                             <div class="col-sm-6">
