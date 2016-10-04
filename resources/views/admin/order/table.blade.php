@@ -36,6 +36,10 @@
                         <button class="btn btn-success btn-sm">
                             {{ trans('order.paid') }}
                         </button>
+                    @elseif ($order->isPaypal())
+                        <button class="btn btn-warning btn-sm">
+                            {{ trans('order.paypal') }}
+                        </button>
                     @else
                         <button class="btn btn-danger btn-sm">
                             {{ trans('order.destroy') }}

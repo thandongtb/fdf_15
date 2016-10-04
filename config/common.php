@@ -23,6 +23,7 @@ return [
         'status' => [
             'paid' => 1,
             'unpaid' => 2,
+            'paypal' => 3,
             'destroy' => 0,
         ],
     ],
@@ -30,6 +31,7 @@ return [
         'status' => [
             'paid' => 1,
             'unpaid' => 2,
+            'paypal' => 3,
             'destroy' => 0,
         ],
     ],

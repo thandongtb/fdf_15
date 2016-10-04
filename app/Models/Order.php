@@ -38,4 +38,9 @@ class Order extends Model
     {
         return $this->status == config('common.order.status.destroy');
     }
+
+    public function isPaypal()
+    {
+        return $this->status == config('common.order.status.paypal');
+    }
 }

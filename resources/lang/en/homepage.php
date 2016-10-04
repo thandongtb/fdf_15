@@ -54,6 +54,7 @@ return [
         'permission_denied' => 'Permission denied to access this page',
         'rate_successful' => 'Rate this product Successful',
         'rate_fail' => 'Rate this product failed',
+        'payment_paypal_fail' => 'Payment with paypal failed. Try again later'
     ],
     'my_account' => 'My Account',
     'wishlist' => 'Wish list',
@@ -131,5 +132,11 @@ return [
     'search_result' => 'Search Result',
     'no_result' => 'No search result',
     'search_product' => 'Search Products',
-    'search' => 'Search'
+    'search' => 'Search',
+    'payment_description' => 'Payment description',
+    'direct_payment' => 'Direct Bank Transfer',
+    'what_is_paypal' => 'What is PayPal?',
+    'paypal' => 'Paypal',
+    'paypal_approve' => 'Created Payment Using PayPal. Please visit the URL to Approve.',
+    'payment' => 'Payment',
 ];

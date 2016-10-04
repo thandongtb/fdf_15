@@ -29,6 +29,8 @@ Route::resource('category', 'Home\CategoriesController');
 
 Route::resource('suggest', 'Home\SuggestController');
 
+Route::resource('paypal', 'Home\PaypalController');
+
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');

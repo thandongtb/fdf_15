@@ -20,6 +20,7 @@ return [
     'unpaid' => 'Unpaid',
     'paid' => 'Paid',
     'destroy' => 'Destroy',
+    'paypal' => 'Paypal',
     'details' => 'Order Details',
     'product' => 'Product',
     'quantity' => 'Quantity',

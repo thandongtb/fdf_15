@@ -9,6 +9,7 @@ use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests;
 use App\Services\ChatworkService;
+use App\Services\PaypalService;
 use Cart;
 use Mail;
 use Auth;
@@ -20,17 +21,20 @@ class OrderController extends Controller
     private $orderRepository;
     private $itemRepository;
     private $chatworkService;
+    private $paypalService;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
         OrderRepositoryInterface $orderRepository,
         ItemRepositoryInterface $itemRepository,
-        ChatworkService $chatworkService
+        ChatworkService $chatworkService,
+        PaypalService $paypalService
     ) {
         $this->productRepository = $productRepository;
         $this->orderRepository = $orderRepository;
         $this->itemRepository = $itemRepository;
         $this->chatworkService = $chatworkService;
+        $this->paypalService = $paypalService;
         $this->middleware('auth');
     }
 
@@ -45,34 +49,40 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        DB::beginTransaction();
+        if ($request->payment_method == config('paypal.order_method.basic')) {
+            DB::beginTransaction();
 
-        try {
-            $order = $this->orderRepository->storeOrder($request);
-            $orderId = $order->id;
-            $items = $this->itemRepository->save($orderId);
+            try {
+                $order = $this->orderRepository->storeOrder($request);
 
-            foreach ($items as $key => $item) {
-                $product = $this->productRepository->find($item->product_id);
-                $quantityChange = $product->quantity - $item->quantity;
-                $this->productRepository->update(['quantity' => $quantityChange], $product->id);
+                $items = $this->itemRepository->save($order->id);
+
+                foreach ($items as $key => $item) {
+                    $product = $this->productRepository->find($item->product_id);
+                    $quantityChange = $product->quantity - $item->quantity;
+                    $this->productRepository->update(['quantity' => $quantityChange], $product->id);
+                }
+
+                DB::commit();
+
+                $this->chatworkService->sendMessageToRoom(trans('homepage.buy_success'));
+
+                Mail::send('emails.order', ['order' => $order, 'items' => $items], function ($message) {
+                    $message->to(Auth::user()->email)->subject(trans('homepage.order_info'));
+                });
+                Cart::destroy();
+            } catch (Exception $e) {
+                DB::rollBack();
+
+                throw $e;
             }
 
-            DB::commit();
-
-            $this->chatworkService->sendMessageToRoom(trans('homepage.buy_success'));
-
-            Mail::send('emails.order', ['order' => $order, 'items' => $items], function ($message) {
-                $message->to(Auth::user()->email)->subject(trans('homepage.order_info'));
-            });
-            Cart::destroy();
-        } catch (Exception $e) {
-            DB::rollBack();
-
-            throw $e;
+            return redirect()->action('Home\OrderController@show', [$order->id]);
         }
 
-        return redirect()->action('Home\OrderController@show', [$order->id]);
+        $approvalUrl = $this->paypalService->storeOrder($request);
+
+        return redirect()->to($approvalUrl);
     }
 
     public function show($id)
@@ -89,4 +99,5 @@ class OrderController extends Controller
 
         return view('home.checkout_success', compact('order', 'carts', 'subTotal', 'totalCartItems'));
     }
+
 }

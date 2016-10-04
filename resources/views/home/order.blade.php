@@ -108,7 +108,8 @@
                                                     ]) !!}
                                                 </p>
                                                 <div class="clear"></div>
-                                                <p id="billing-phone-field" class="form-row form-row-last validate-required validate-phone">
+                                                <p id="billing-phone-field"
+                                                    class="form-row form-row-last validate-required validate-phone">
                                                     {!! Form::label('phone', trans('homepage.phone')) !!}
                                                     {!! Form::text('phone', Auth::user()->phone, [
                                                         'class' => 'input-text',
@@ -117,6 +118,41 @@
                                                 </p>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div id="payment">
+                                        <ul class="payment_methods methods">
+                                            <li class="payment_method_bacs">
+                                                {{ Form::radio('payment_method',
+                                                config('paypal.order_method.basic'), [
+                                                    'class' => 'input-radio',
+                                                    'id' => 'payment-method-bacs',
+                                                    'checked' => 'checked'
+                                                ]) }}
+                                                <label for="payment_method_bacs">
+                                                    {{ trans('homepage.direct_payment') }}
+                                                </label>
+                                            </li>
+                                            <li class="payment_method_paypal">
+                                                {{ Form::radio('payment_method',
+                                                config('paypal.order_method.paypal'), [
+                                                    'class' => 'input-radio',
+                                                    'id' => 'payment-method-paypal'
+                                                ]) }}
+                                                <label for="payment_method_paypal">
+                                                    {{ trans('homepage.paypal') }}
+                                                    <img alt="PayPal Acceptance Mark"
+                                                    src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png">
+                                                    <a title="What is PayPal?"
+                                                        onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
+                                                            class="about_paypal"
+                                                            href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">
+                                                        {{ trans('homepage.what_is_paypal') }}
+                                                    </a>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
+
                                     </div>
                                 </div>
                             {!! Form::close() !!}
