@@ -25,6 +25,8 @@ Route::resource('product', 'Home\ProductController');
 
 Route::resource('comment', 'Home\CommentsController');
 
+Route::resource('category', 'Home\CategoriesController');
+
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');

@@ -44,6 +44,7 @@ return [
     'results' => 'Results',
     'all_categories' => 'All Categories',
     'all_products' => 'All Products',
+    'all_products_of_category' => 'All Products In Category',
     'all_orders' => 'All Orders',
     'create_categories' => 'Create Categories',
     'create_product' => 'Create Product',

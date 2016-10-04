@@ -22,4 +22,5 @@ return [
     'create_category_fail' => 'Category create fail',
     'update_category_fail' => 'Category update fail',
     'delete_category_fail' => 'Category delete fail',
+    'image' => 'Image',
 ];

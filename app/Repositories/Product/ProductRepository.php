@@ -26,6 +26,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->paginate(config('paginate.product.normal'));
     }
 
+    public function getProductsByCategory($categoryId)
+    {
+        return $this->model->where('category_id', $categoryId)
+            ->paginate(config('paginate.product.normal'));
+    }
+
     public function getAllComments($id)
     {
         return $this->commentModel->with('user')

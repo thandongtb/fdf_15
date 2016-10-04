@@ -1,39 +1,55 @@
 @extends('layouts.app')
 
 @section('css')
-    {!! Html::style('bower/toastr/toastr.css') !!}
+    {!! Html::style('css/user.css') !!}
 @endsection()
 
 @section('content')
-    @include('home.header')
-    <div class="promo-area">
-        <div class="zigzag-bottom"></div>
+
+@include('home.header')
+
+<div id="page-wrapper">
+    <div class="product-big-title-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-promo promo2">
-                        <i class="fa fa-truck"></i>
-                        <p>{{ trans('homepage.free_ship') }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-promo promo3">
-                        <i class="fa fa-lock"></i>
-                        <p>{{ trans('homepage.secure_payment') }}</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="single-promo promo4">
-                        <i class="fa fa-gift"></i>
-                        <p>{{ trans('homepage.new_product') }}</p>
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{{ trans('admin/users.all_products_of_category') }}</h2>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End promo area -->
-
+    </div> <!-- End Page title area <--></-->
     @include('layouts.message')
-
+    <hr>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-category-information">
+                                <tbody>
+                                    <tr>
+                                        <td>{{ trans('category.id') }}:</td>
+                                        <td>{{ $category->id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ trans('category.name') }}:</td>
+                                        <td>{{ $category->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ trans('category.description') }}:</td>
+                                        <td>{{ $category->description }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -44,7 +60,9 @@
                         <div class="product-upper">
                             <img src="{{ $product->image }}" alt="" class="img-product-show">
                         </div>
-                        <h2><a href="{{ action('Home\ProductController@show', ['id' => $product->id ]) }}">{{ $product->name }}</a></h2>
+                        <h2><a href="{{ action('Home\ProductController@show', [
+                            'id' => $product->id
+                        ]) }}">{{ $product->name }}</a></h2>
                         <div class="rating-chooser">
                             <div class="col-lg-8 all-rate-product"
                                 id="all-rate-product-{{ $product->id }}"
@@ -66,16 +84,14 @@
                 </div>
             @endforeach()
             </div>
-
             {!! $products->render() !!}
         </div>
     </div>
+</div>
 
 @endsection
 
 @section('js')
-    {!! Html::script('js/homepage.js') !!}
-    {!! Html::script('bower/toastr/toastr.js') !!}
+    {!! Html::script('js/show-category.js') !!}
     {!! Html::script('assets/JRate/jRate.js') !!}
 @endsection
-
