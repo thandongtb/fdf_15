@@ -39,4 +39,9 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
         return $order;
     }
+
+    public function getDataToDownload()
+    {
+        return $this->model->get()->toArray();
+    }
 }

@@ -42,4 +42,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('order', 'Admin\OrderController');
 
     Route::resource('user', 'Admin\UsersController');
+
+    Route::get('order/downloadExcel/{type}', 'Admin\OrderController@downloadExcel');
 });
