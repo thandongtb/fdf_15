@@ -119,5 +119,8 @@ return [
     'submit' => 'Submit',
     'all_comment' => 'All Comments',
     'buy_success' => 'I have order Successful in Food And Drink',
-    'order_complete' => 'You have complete the order.'
+    'order_complete' => 'You have complete the order.',
+    'all' => 'All Product',
+    'best_price' => 'Best Price Product',
+    'best_selling' => 'Best Selling Product',
 ];

@@ -35,4 +35,13 @@ class ItemRepository extends BaseRepository implements ItemRepositoryInterface
             return $this->findBy('order_id', $orderId);
         }
     }
+
+    public function orderByBestSelling()
+    {
+        return $this->model->with('product')
+            ->selectRaw('product_id, sum(items.quantity) as sum')
+            ->groupBy('product_id')
+            ->orderBy('sum', 'desc')
+            ->paginate(config('paginate.item.normal'));
+    }
 }

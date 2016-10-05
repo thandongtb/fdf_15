@@ -37,6 +37,7 @@ class CommentsController extends Controller
                 $data['rate_count'] = intval($rateCount) + 1;
 
                 $this->productRepository->update($data, $request->product_id);
+
                 $this->commentRepository->create($comment);
 
                 DB::commit();
