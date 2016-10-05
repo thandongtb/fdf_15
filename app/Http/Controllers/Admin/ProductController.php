@@ -52,7 +52,8 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $product['image'] = $this->imageService->uploadCloud($file, config('common.path_cloud_product'), $request->name);
+            $product['image'] = $this->imageService->uploadCloud($file,
+                config('common.path_cloud_product'), $request->name);
         }
 
         if ($this->productRepository->create($product)) {

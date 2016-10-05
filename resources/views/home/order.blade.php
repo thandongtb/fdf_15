@@ -34,7 +34,7 @@
                             </div>
 
                             {!! Form::open([
-                                'route' => ['order.store'],
+                                'action' => ['Home\OrderController@store'],
                                 'name' => 'checkout',
                                 'class' => 'form-store-order checkout',
                                 'method' => 'POST'

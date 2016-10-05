@@ -8,6 +8,7 @@ use App\Repositories\Item\ItemRepositoryInterface;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Http\Requests;
+use App\Services\ChatworkService;
 use Cart;
 use Mail;
 use Auth;
@@ -18,15 +19,18 @@ class OrderController extends Controller
     private $productRepository;
     private $orderRepository;
     private $itemRepository;
+    private $chatworkService;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
         OrderRepositoryInterface $orderRepository,
-        ItemRepositoryInterface $itemRepository
+        ItemRepositoryInterface $itemRepository,
+        ChatworkService $chatworkService
     ) {
         $this->productRepository = $productRepository;
         $this->orderRepository = $orderRepository;
         $this->itemRepository = $itemRepository;
+        $this->chatworkService = $chatworkService;
         $this->middleware('auth');
     }
 
@@ -55,6 +59,9 @@ class OrderController extends Controller
             }
 
             DB::commit();
+
+            $this->chatworkService->sendMessageToRoom(trans('homepage.buy_success'));
+
             Mail::send('emails.order', ['order' => $order, 'items' => $items], function ($message) {
                 $message->to(Auth::user()->email)->subject(trans('homepage.order_info'));
             });

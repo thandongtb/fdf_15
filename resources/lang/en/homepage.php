@@ -118,4 +118,6 @@ return [
     'rate' => 'Rate',
     'submit' => 'Submit',
     'all_comment' => 'All Comments',
+    'buy_success' => 'I have order Successful in Food And Drink',
+    'order_complete' => 'You have complete the order.'
 ];
