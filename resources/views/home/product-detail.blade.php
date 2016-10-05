@@ -32,12 +32,15 @@
                             <a href="{{ action('Home\HomeController@index') }}">
                                 {{ trans('homepage.home_menu') }}
                             </a>
-                            <a href="">{{ $category->name }}</a>
+                            <a href="{{ action('Home\CategoriesController@show', [
+                                'id' => $category->id
+                            ]) }}">
+                                {{ $category->name }}
+                            </a>
                             <a href="{{ action('Home\ProductController@show', ['id' => $product->id ]) }}">
                                 {{ $product->name }}
                             </a>
                         </div>
-
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-images">
@@ -46,7 +49,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-sm-6">
                                 <div class="product-inner">
                                     <h2 class="product-name">{{ $product->name }}</h2>
@@ -55,22 +57,20 @@
                                             {{ trans('homepage.dollar') . ' ' . $product->price }}
                                         </ins>
                                     </div>
-
                                     <div class="rating-chooser">
-                                        <div class="col-lg-8" id="all-rate-product"
+                                        <div class="col-lg-8"
+                                            id="all-rate-product"
                                             name="all-rate-product"
-                                            data-rating="{{ $product->rate_total / $product->rate_count }}">
+                                            data-rating="{{ $product->rate_count == 0 ? 0 :
+                                            $product->rate_total / $product->rate_count }}">
                                         </div>
                                     </div>
-
                                     <div class="product-option-shop">
                                         <a class="btn-add-to-cart" data-product-id="{{ $product->id }}" rel="nofollow">
                                             {{ trans('homepage.add_to_cart') }}
                                         </a>
                                     </div>
-
                                     <hr>
-
                                     <div role="tabpanel">
                                         <ul class="product-tab" role="tablist">
                                             <li role="presentation" class="active">
@@ -127,7 +127,6 @@
                                                             </span>
                                                         @endif
                                                     </p>
-
                                                     <div class="rating-chooser">
                                                         <p>{{ trans('homepage.rating') }}</p>
                                                         <div class="col-lg-8" id="rate-product"
@@ -141,9 +140,7 @@
                                                             'id' => 'rate-product-value',
                                                         ]) !!}
                                                     </div>
-
                                                     {!! Form::close() !!}
-
                                                     <p>
                                                         {!! Form::button(trans('homepage.submit'), [
                                                             'class' => 'btn btn-primary review-submit',
@@ -156,11 +153,9 @@
                                                     {{ trans('homepage.product_description') }}
                                                 </h2>
                                                 <p>{{ $product->description }}</p>
-
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -179,6 +174,5 @@
 @section('js')
     {!! Html::script('js/product-detail.js') !!}
     {!! Html::script('assets/JRate/jRate.js') !!}
-    {!! Html::script('bower/toastr/toastr.js') !!}
 @endsection
 

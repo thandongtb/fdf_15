@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('auth.login') }}</div>
+                @include('layouts.message')
                 <div class="panel-body">
                     {{ Form::open(['url' => '/login', 'class' => 'form-horizontal']) }}
                         {{ csrf_field() }}
