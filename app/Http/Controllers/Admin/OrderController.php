@@ -57,14 +57,16 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $status = $request->status;
-        $order = $this->orderRepository->update(['status' => $status], $id);
+        $order = $this->orderRepository->update([
+            'status' => $status
+        ], $id);
 
         if ($order) {
             return redirect()->action('Admin\OrderController@index')
-                ->withSuccess(trans('order.update_success'));;
+                ->withSuccess(trans('order.update_success'));
         }
 
         return redirect()->action('Admin\OrderController@index')
-            ->withErrors(trans('order.update_fail'));
+                ->withErrors(trans('order.update_fail'));
     }
 }
