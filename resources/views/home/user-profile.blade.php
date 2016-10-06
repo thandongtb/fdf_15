@@ -77,7 +77,7 @@
 
                 <div class="panel-footer text-center">
                     @if ($user->isCurrent())
-                        {!! link_to_route('user.edit',
+                        {!! link_to_action('Home\UsersController@edit',
                         trans('admin/users.edit'), [$user->id], [
                             'class' => 'btn btn-success'
                         ]) !!}
