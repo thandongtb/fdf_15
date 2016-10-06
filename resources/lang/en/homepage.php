@@ -123,4 +123,5 @@ return [
     'all' => 'All Product',
     'best_price' => 'Best Price Product',
     'best_selling' => 'Best Selling Product',
+    'download_order' => 'Download Order With Excel',
 ];

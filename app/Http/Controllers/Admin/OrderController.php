@@ -10,6 +10,7 @@ use App\Services\OrderService;
 use wataridori\ChatworkSDK\ChatworkSDK;
 use wataridori\ChatworkSDK\ChatworkRoom;
 use App\Services\ChatworkService;
+use Excel;
 
 class OrderController extends Controller
 {
@@ -68,5 +69,16 @@ class OrderController extends Controller
 
         return redirect()->action('Admin\OrderController@index')
                 ->withErrors(trans('order.update_fail'));
+    }
+
+    public function downloadExcel($type)
+    {
+        $data  = $this->orderRepository->getDataToDownload();
+
+        return Excel::create('allOrderFoodDrink', function ($excel) use ($data) {
+            $excel->sheet('mySheet', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
     }
 }
