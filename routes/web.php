@@ -27,6 +27,8 @@ Route::resource('comment', 'Home\CommentsController');
 
 Route::resource('category', 'Home\CategoriesController');
 
+Route::resource('suggest', 'Home\SuggestController');
+
 Route::get('social/redirect/{type}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('social/callback/{driver}', 'Auth\LoginController@handleProviderCallback');
@@ -42,6 +44,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('order', 'Admin\OrderController');
 
     Route::resource('user', 'Admin\UsersController');
+
+    Route::resource('suggest', 'Admin\SuggestController');
 
     Route::get('order/downloadExcel/{type}', 'Admin\OrderController@downloadExcel');
 });

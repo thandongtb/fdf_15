@@ -9,6 +9,7 @@ use App\Repositories\Social\SocialRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Order\OrderRepository;
+use App\Repositories\Suggest\SuggestRepository;
 use App\Repositories\Comment\CommentRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Social\SocialRepositoryInterface;
@@ -17,6 +18,7 @@ use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\Item\ItemRepositoryInterface;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Comment\CommentRepositoryInterface;
+use App\Repositories\Suggest\SuggestRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -43,5 +45,6 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(ItemRepositoryInterface::class, ItemRepository::class);
         App::bind(OrderRepositoryInterface::class, OrderRepository::class);
         App::bind(CommentRepositoryInterface::class, CommentRepository::class);
+        App::bind(SuggestRepositoryInterface::class, SuggestRepository::class);
     }
 }

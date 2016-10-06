@@ -19,7 +19,11 @@
                         config('user.avatar.default_url') : $user->avatar }}"
                     class="img-circle img-responsive img-user-avatar">
             </td>
-            <td>{{ $user->name }}</td>
+            <td>
+                <a href="{!! action('Admin\UsersController@show', [$user->id]) !!}">
+                    {{ $user->name }}
+                </a>
+            </td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->phone }}</td>
             <td>{{ $user->address }}</td>
@@ -33,9 +37,11 @@
             <td>
                 {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('user.show', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! action('Admin\UsersController@show', [$user->id]) !!}"
+                        class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     @if ($user->isCurrent()|| !$user->isAdmin())
-                        <a href="{!! route('user.edit', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! action('Admin\UsersController@edit', [$user->id]) !!}"
+                            class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     @endif
                     @if ($user->isCurrent() && !$user->isAdmin())
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm("' . trans('label.confirm_delete') . '")']) !!}
