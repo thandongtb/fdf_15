@@ -51,7 +51,7 @@ class SuggestController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->image;
             $suggest['image'] = $this->imageService->uploadCloud($file,
-            config('common.path_cloud_product'), $request->name);
+                config('common.path_cloud_product'), $request->name);
         }
 
         $suggest['user_id'] = Auth::user()->id;

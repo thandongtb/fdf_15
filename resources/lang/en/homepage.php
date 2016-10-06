@@ -50,6 +50,7 @@ return [
         'update_user_success' => 'Update user success.',
         'update_user_fail' => 'Update user failed. Please try again',
         'find_user_fail' => 'Cant find this user. Please try again latar',
+        'find_product_fail' => 'Cant find this product. Please try again latar',
         'permission_denied' => 'Permission denied to access this page',
         'rate_successful' => 'Rate this product Successful',
         'rate_fail' => 'Rate this product failed',
@@ -127,4 +128,8 @@ return [
     'suggest_error' => 'Send suggestion failed',
     'suggest_success' => 'Send suggestion successful',
     'suggest' => 'Suggest Product To Admin',
+    'search_result' => 'Search Result',
+    'no_result' => 'No search result',
+    'search_product' => 'Search Products',
+    'search' => 'Search'
 ];
